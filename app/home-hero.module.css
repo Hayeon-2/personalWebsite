@@ -56,23 +56,6 @@
 }
 
 .name > span { display: block; white-space: nowrap; }
-.period { color: var(--accent); }
-
-.name > span:last-child {
-  position: relative;
-  width: max-content;
-  max-width: 100%;
-}
-
-.name > span:last-child::after {
-  position: absolute;
-  bottom: .12em;
-  left: calc(100% + 24px);
-  width: clamp(40px, 8vw, 104px);
-  height: 1px;
-  background: #cbbbd6;
-  content: "";
-}
 
 .portrait {
   position: relative;
@@ -203,7 +186,6 @@
     margin-top: 24px;
   }
   .name { letter-spacing: -.02em; }
-  .name > span:last-child::after { display: none; }
   .portrait {
     width: min(100%, var(--portrait-width));
     margin: 8px auto 0;

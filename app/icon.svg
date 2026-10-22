@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <title>HY</title>
+  <rect width="64" height="64" fill="#F8F6F2"/>
+  <!-- Outlined italic serif letters keep the monogram independent of system fonts. -->
+  <g fill="#7D658F" transform="translate(6 0) skewX(-10)">
+    <path d="M8 12h10v2h-3v16h7V14h-3v-2h10v2h-3v36h3v2H19v-2h3V32h-7v18h3v2H8v-2h3V14H8Z"/>
+    <path d="M31 12h11v2h-3l6 15 6-13c.5-1.5 0-2-2-2h-2v-2h9v2h-2l-7 19v17h4v2H37v-2h5V33l-8-19h-3Z"/>
+  </g>
+</svg>

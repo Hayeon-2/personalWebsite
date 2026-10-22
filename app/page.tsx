@@ -24,7 +24,7 @@ export default function HomePage() {
         <div className={styles.composition}>
           <div className={styles.copy}>
             <h1 id="home-introduction" className={styles.name}>
-              <span>HAYEON</span>{" "}<span>YUN<span className={styles.period}>.</span></span>
+              <span>HAYEON</span>{" "}<span>YUN</span>
             </h1>
             <div className={styles.intro}>
               <p className={styles.tagline}>
