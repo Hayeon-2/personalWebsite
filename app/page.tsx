@@ -1,38 +1,83 @@
-export default function Home() {
+import Image from "next/image";
+import { Barlow_Condensed } from "next/font/google";
+import styles from "./home-hero.module.css";
+import { ContactLinks } from "@/components/contact-links";
+import { profile } from "@/data/site";
+
+const heroFont = Barlow_Condensed({
+  weight: "800",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--hero-heading-font",
+  fallback: ["Impact", "Arial Narrow", "Helvetica Neue", "Arial", "sans-serif"],
+  adjustFontFallback: false,
+});
+
+export default function HomePage() {
   return (
-    <div className="flex min-h-svh flex-col px-6 sm:px-12">
-      <header className="mx-auto flex w-full max-w-5xl items-center gap-2.5 py-8 text-sm font-semibold tracking-tight">
-        <span aria-hidden="true" className="size-2.5 rounded-full bg-emerald-600" />
-        hello.
-      </header>
+    <>
+      <section className={heroFont.variable + " " + styles.hero} aria-labelledby="home-introduction">
+        <div className={styles.topline}>
+          <p className={styles.descriptor}>{profile.department} <span aria-hidden="true">/</span> {profile.university}</p>
+          <p className={styles.edition}>Personal research portfolio</p>
+        </div>
+        <div className={styles.composition}>
+          <div className={styles.copy}>
+            <h1 id="home-introduction" className={styles.name}>
+              <span>HAYEON</span>{" "}<span>YUN<span className={styles.period}>.</span></span>
+            </h1>
+            <div className={styles.intro}>
+              <p className={styles.tagline}>
+                <span>Curious about the science.</span>
+                <span>Hands-on with the engineering.</span>
+              </p>
+              <p className={styles.researchDescriptor}>Bioelectronics · Biomedical Devices · Research</p>
+              <ContactLinks showLabels />
+            </div>
+          </div>
+          <figure className={styles.portrait}>
+            <div className={styles.portraitMount}>
+              <div className={styles.portraitFrame}>
+                <Image
+                  src={profile.photo}
+                  alt={profile.photoAlt}
+                  fill
+                  sizes="(max-width: 359px) calc(100vw - 40px), (max-width: 767px) 320px, (max-width: 1000px) 280px, 320px"
+                  quality={85}
+                  loading="eager"
+                  className={styles.portraitImage}
+                />
+              </div>
+            </div>
+          </figure>
+        </div>
+      </section>
 
-      <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col items-start justify-center py-20 sm:py-28">
-        <p className="mb-6 font-mono text-xs tracking-[0.2em] text-emerald-700">
-          A LITTLE BEGINNING
-        </p>
-        <h1 className="text-6xl leading-[1.05] font-semibold tracking-[-0.065em] sm:text-8xl md:text-9xl">
-          Hello,
-          <br />
-          World<span className="text-emerald-600">!</span>
-        </h1>
-        <p className="mt-8 text-base leading-8 text-stone-600 sm:text-lg">
-          안녕하세요, 반가워요.
-          <br />
-          이곳에서 새로운 이야기를 시작합니다.
-        </p>
-        <a
-          href="https://nextjs.org/docs"
-          className="mt-10 inline-flex min-h-12 items-center gap-6 rounded-full bg-stone-900 px-6 text-sm font-medium text-white transition-colors hover:bg-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700"
-        >
-          Next.js 문서 보기
-          <span aria-hidden="true">↗</span>
-        </a>
-      </main>
-
-      <footer className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-3 border-t border-stone-200 py-6 text-xs text-stone-500">
-        <p>작은 시작, 무한한 가능성.</p>
-        <p>Next.js + Tailwind CSS</p>
-      </footer>
-    </div>
+      <div className={"home-notes " + styles.notes}>
+        <section className={styles.aboutPanel} aria-labelledby="about-me">
+          <h2 id="about-me" className="subsection-title">About Me</h2>
+          <div className="home-about">
+            {profile.about.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          </div>
+          <h3 className="mini-heading">Research Interests</h3>
+          <ul className="keyword-list">
+            {profile.interests.map((interest) => <li key={interest}>{interest}</li>)}
+          </ul>
+        </section>
+        <section className={"education-section " + styles.educationPanel} aria-labelledby="education">
+          <h2 id="education" className="subsection-title">Education</h2>
+          <ol className="education-list">
+            {profile.education.map((entry) => (
+              <li key={entry.institution}>
+                <h3>{entry.institution}</h3>
+                <p>{entry.degree}</p>
+                <p className="education-date">{entry.dates}</p>
+                <p className="education-gpa">GPA <span>{entry.gpa}</span></p>
+              </li>
+            ))}
+          </ol>
+        </section>
+      </div>
+    </>
   );
 }
